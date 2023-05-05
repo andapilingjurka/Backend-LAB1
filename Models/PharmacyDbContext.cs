@@ -9,6 +9,8 @@ namespace E_PharmacyCrud.Controllers.Models
         }
         public DbSet<Stafi> Stafi { get; set; }
 
+        public DbSet<ProduktKozmetik> ProduktKozmetik { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
