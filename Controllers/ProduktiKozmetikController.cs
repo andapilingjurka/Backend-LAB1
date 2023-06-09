@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using E_PharmacyCrud.Controllers.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pharmacy.Models;
@@ -12,7 +13,7 @@ namespace Pharmacy.Controllers
         private readonly PharmacyDbContext _pharmacyDbContext;
 
         public ProduktiKozmetikController(PharmacyDbContext pharmacyDbContext)
-        {
+        {   
             _pharmacyDbContext = pharmacyDbContext;
         }
 

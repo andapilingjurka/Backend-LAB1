@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using E_PharmacyCrud.Controllers.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pharmacy.Models;

@@ -4,10 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>E_PharmacyCrud</RootNamespace>
+    <RootNamespace>E_Pharmacy</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+	  	  
+    <PackageReference Include="BCrypt.Net" Version="0.1.0" />
+	  	  
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -1,6 +1,8 @@
-﻿using Another_test.Models;
+﻿
+using E_PharmacyCrud.Controllers.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Pharmacy.Models;
 
 namespace Another_test.Controllers
 {
