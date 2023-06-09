@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using pharmacy.Model;
+using Pharmacy.Models;
 
 namespace E_PharmacyCrud.Controllers.Models
 {
@@ -10,6 +12,12 @@ namespace E_PharmacyCrud.Controllers.Models
         public DbSet<Stafi> Stafi { get; set; }
 
         public DbSet<ProduktKozmetik> ProduktKozmetik { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+        
+        public DbSet<Kontakti> Kontakti { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
