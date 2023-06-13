@@ -2,7 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using pharmacy.Model;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace pharmacy.Controllers
 {
@@ -55,18 +59,47 @@ namespace pharmacy.Controllers
 
         public async Task<IActionResult> Login(Login user)
         {
-
-            //    // Find the user with the specified email address
             var userInDb = await _userDbContext.Users.SingleOrDefaultAsync(u => u.Email == user.Email);
 
-
-            // If the user is not found or the password is incorrect, return an error message
             if (userInDb == null || !BCrypt.Net.BCrypt.Verify(user.Password, userInDb.Password))
             {
                 return BadRequest("Invalid email or password.");
             }
 
-            return Ok(userInDb);
+            var role = userInDb.role;
+
+            // Create claims for the token
+            var claims = new[]
+            {
+        new Claim(ClaimTypes.Name, userInDb.Email),
+        new Claim(ClaimTypes.Role, role)
+    };
+
+            // Generate symmetric security key
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKeyWithAtLeast16Characters"));
+
+            // Generate signing credentials using the security key
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            // Create token descriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddDays(1), // Set token expiration
+                SigningCredentials = credentials
+            };
+
+            // Create a token handler
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            // Generate token based on the token descriptor
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            // Convert token to a string
+            var tokenString = tokenHandler.WriteToken(token);
+
+            return Ok(new { Token = tokenString });
         }
+
     }
 }
