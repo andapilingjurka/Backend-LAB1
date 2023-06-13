@@ -1,5 +1,6 @@
 using E_PharmacyCrud.Controllers.Models;
 using Microsoft.EntityFrameworkCore;
+using Pharmacy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<PharmacyDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("StafiDbContext")));
 
-
+builder.Services.AddStripeInfrastructure(builder.Configuration);
 
 
 var app = builder.Build();
