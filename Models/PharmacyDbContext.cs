@@ -22,7 +22,7 @@ namespace E_PharmacyCrud.Controllers.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server=DUKAGJIN\\MSSQLSERVER1; Database=stafi; Trusted_Connection=True; MultipleActiveResultSets=true;trustServerCertificate=true") ; ;                
+            optionsBuilder.UseSqlServer("Server=DESKTOP-U1LK9B3; Database=pharmacy1; Trusted_Connection=True; MultipleActiveResultSets=true;trustServerCertificate=true") ; ;                
         }
 
 
